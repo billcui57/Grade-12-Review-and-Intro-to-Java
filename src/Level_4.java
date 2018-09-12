@@ -22,25 +22,31 @@ public class Level_4 {
         System.out.println("Enter hill distance");
         int hillDistance = input.nextInt();
         System.out.println("Initial climb attempt distance");
-        double initialClimbDistance = input.nextInt();
+        double initialClimbDistance = input.nextDouble();
         System.out.println("Slide down distance");
-        int slideDistance = input.nextInt();
+        double slideDistance = input.nextDouble();
         System.out.println("Fatigue factor %");
-        double fatigueFactor = input.nextInt();
+        double fatigueFactor = input.nextDouble();
         
         
-        do{
-            climbedDistance += (initialClimbDistance-((fatigueFactor/100)*initialClimbDistance*i))-slideDistance;
+        while(true){
+            double climbed= (initialClimbDistance-(initialClimbDistance*i*(fatigueFactor/100)));
+            if(climbed>0){
+                climbedDistance+=climbed;
+            }
+            
             System.out.println(climbedDistance);
-            i++;
-            if(climbedDistance<0){
+            
+            if(climbedDistance<=0){
                 System.out.println("Failure on attempt " +(i+1));
                 break;
-            }else if(climbedDistance>hillDistance){
+            }else if(climbedDistance>=hillDistance){
                 System.out.println("Success on attempt " +(i+1));
                 break;
             }
-        }while((climbedDistance>0)&&(climbedDistance<hillDistance));
+            climbedDistance-=slideDistance;
+            i++;
+        }
         
     }
 }
