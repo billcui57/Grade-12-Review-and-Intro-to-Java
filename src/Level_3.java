@@ -1,4 +1,5 @@
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /*
@@ -13,20 +14,23 @@ import java.util.Scanner;
  */
 public class Level_3 {
     public static void main(String[] args){
+        DecimalFormat f = new DecimalFormat("#0.00");
+    
         String name[] = new String[4];
-        int shotsTaken[] = new int[4];
-        int shotsMade[] = new int[4];
+        
+        double shotsTaken[] = new double[4];
+        double shotsMade[] = new double[4];
         Scanner input = new Scanner(System.in);
         
-        int max=0;
+        double max=0;
         int maxPerson=0;
         for(int i=0;i<4;i++){
             System.out.println("Enter Name");
             name[i]=input.next();
             System.out.println("Enter shots taken");
-            shotsTaken[i]=input.nextInt();
+            shotsTaken[i]=input.nextDouble();
             System.out.println("Enter shots made");
-            shotsMade[i]=input.nextInt();
+            shotsMade[i]=input.nextDouble();
             if(((shotsMade[i]/shotsTaken[i])*100)>max){
                 max=(shotsMade[i]/shotsTaken[i])*100;
                 maxPerson=i;
@@ -34,7 +38,7 @@ public class Level_3 {
         }
         
         for(int i=0;i<4;i++){
-            System.out.println(name[i] + "-" + (shotsMade[i]/shotsTaken[i]));
+            System.out.println(name[i] + "-" + f.format((shotsMade[i]/shotsTaken[i])*100));
         }
         
         System.out.println(name[maxPerson] +" is the best player.");

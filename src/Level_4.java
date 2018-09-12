@@ -30,12 +30,14 @@ public class Level_4 {
         
         
         while(true){
+            
+            
             double climbed= (initialClimbDistance-(initialClimbDistance*i*(fatigueFactor/100)));
             if(climbed>0){
                 climbedDistance+=climbed;
             }
             
-            System.out.println(climbedDistance);
+           
             
             if(climbedDistance<=0){
                 System.out.println("Failure on attempt " +(i+1));
@@ -45,6 +47,7 @@ public class Level_4 {
                 break;
             }
             climbedDistance-=slideDistance;
+            
             i++;
         }
         
