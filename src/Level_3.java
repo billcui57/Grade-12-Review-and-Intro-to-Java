@@ -25,22 +25,27 @@ public class Level_3 {
         double max=0;
         int maxPerson=0;
         for(int i=0;i<4;i++){
+            //accepts user input for name, shots taken, and shots made
             System.out.println("Enter Name");
             name[i]=input.next();
             System.out.println("Enter shots taken");
             shotsTaken[i]=input.nextDouble();
             System.out.println("Enter shots made");
             shotsMade[i]=input.nextDouble();
+            
+            //finds highest shots made percentage and who did it
             if(((shotsMade[i]/shotsTaken[i])*100)>max){
                 max=(shotsMade[i]/shotsTaken[i])*100;
                 maxPerson=i;
             }
         }
         
+        //prints out all percentages with names
         for(int i=0;i<4;i++){
             System.out.println(name[i] + "-" + f.format((shotsMade[i]/shotsTaken[i])*100));
         }
         
+        //prints out the best player
         System.out.println(name[maxPerson] +" is the best player.");
         
         
